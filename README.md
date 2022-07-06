@@ -32,3 +32,5 @@ The default graphite width of 10mm is always used for performance reasons.
 Major Release
 
 perf(pencil): remove graphiteWidth option
+
+BREAKING CHANGE:
