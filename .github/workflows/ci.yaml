@@ -19,6 +19,7 @@ jobs:
 
       - name: Checkout Code Repository
         uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
 
       - name: Build Changelog
         id: build_changelog
