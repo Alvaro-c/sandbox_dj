@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [  "main" ]
+    paths-ignore: [ "docs/**" ]
+
+  push:
+    branches: [ "main" ]
+    paths-ignore: [ "docs/**" ]
+
+
+jobs:
+
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Code Repository
+        uses: actions/checkout@v2
+
+      - name: Build Changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@{latest-release}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{steps.build_changelog.outputs.changelog}}
+          draft: false
+          prerelease: false
