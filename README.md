@@ -10,3 +10,5 @@ This is another update to check how releases behave
 This is branch number 3
 
 Release
+
+feat(text): lowercase nice one
