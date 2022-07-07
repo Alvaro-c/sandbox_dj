@@ -28,3 +28,12 @@ jobs:
           MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
           MERGED_TRUE_BOOL: ${{ github.event.pull_request.merged == true }}
 
+      - name: Alert in Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          channel-id: product-dev
+          slack-message: ${{ steps.tag_version.outputs.changelog }}
+        env:
+          SLACK_BOT_TOKEN: https://hooks.slack.com/services/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
+
