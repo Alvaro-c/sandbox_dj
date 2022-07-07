@@ -23,6 +23,7 @@ jobs:
           echo "github.event.pull_request.merged           : $MERGED_RAW"
           echo "github.event.pull_request.merged == 'true' : $MERGED_TRUE_STR"
           echo "github.event.pull_request.merged  == true  : $MERGED_TRUE_BOOL"
+          echo ${{ secrets.SLACK_BOT_TOKEN }}
         env:
           MERGED_RAW: ${{ github.event.pull_request.merged }}
           MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
@@ -46,8 +47,6 @@ jobs:
                 }
               ]
             }
-        run: |
-          echo ${{ secrets.SLACK_BOT_TOKEN }}
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
