@@ -32,7 +32,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          channel-id: product-dev
+          channel-id: sales-notifications-live
           payload: |
             {
               "text": "${{ steps.tag_version.outputs.changelog }}"
