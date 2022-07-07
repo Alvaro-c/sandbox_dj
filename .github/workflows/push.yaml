@@ -20,7 +20,6 @@ jobs:
           fetch-depth: 0
 
       - name: Bump version and push tag
-        if: github.event.pull_request.merged
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
@@ -28,7 +27,6 @@ jobs:
           default_bump: minor
 
       - name: Create Release
-        if: github.event.pull_request.merged
         id: create_release
         uses: actions/create-release@v1
         env:
