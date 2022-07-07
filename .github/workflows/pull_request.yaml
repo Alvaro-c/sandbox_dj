@@ -23,8 +23,30 @@ jobs:
           echo "github.event.pull_request.merged           : $MERGED_RAW"
           echo "github.event.pull_request.merged == 'true' : $MERGED_TRUE_STR"
           echo "github.event.pull_request.merged  == true  : $MERGED_TRUE_BOOL"
+          echo "${{ secrets.SLACK_BOT_TOKEN }}"
         env:
           MERGED_RAW: ${{ github.event.pull_request.merged }}
           MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
           MERGED_TRUE_BOOL: ${{ github.event.pull_request.merged == true }}
+
+      - name: Alert in Slack
+        id: slack
+        uses: slackapi/slack-github-action@v1.18.0
+        with:
+          channel-id: product-dev
+          payload: |
+            {
+              "text": "Again a test ( this time from GitHub ) ",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Again a test ( this time from GitHub ) "
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
