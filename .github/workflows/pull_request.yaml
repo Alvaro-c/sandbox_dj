@@ -34,19 +34,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.18.0
         with:
           channel-id: product-dev
-          payload: |
-            {
-              "text": "Again a test ( this time from GitHub ) ",
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Again a test ( this time from GitHub ) "
-                  }
-                }
-              ]
-            }
+          slack-message: "(from PR) New Release: bla bla"
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
