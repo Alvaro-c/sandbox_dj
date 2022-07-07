@@ -1,4 +1,0 @@
-on: push
-name: Slack Notification
-jobs:
-

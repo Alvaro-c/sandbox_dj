@@ -42,8 +42,8 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          channel-id: C030XNX7RV4
-          slack-message: ${{ steps.tag_version.outputs.changelog }}
+          channel-id: product-dev
+          slack-message: "New Release: \n${{ steps.tag_version.outputs.changelog }}"
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
