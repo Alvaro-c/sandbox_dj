@@ -35,7 +35,16 @@ jobs:
           channel-id: sales-notifications-live
           payload: |
             {
-              "text": "${{ steps.tag_version.outputs.changelog }}"
+              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+                  }
+                }
+              ]
             }
         env:
           SLACK_BOT_TOKEN: https://hooks.slack.com/services/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
