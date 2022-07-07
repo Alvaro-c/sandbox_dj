@@ -1,9 +1,6 @@
-name: CI
+name: PUSH
 
 on:
-  pull_request:
-    branches: [  "main" ]
-    paths-ignore: [ "docs/**" ]
 
   push:
     branches: [ "main" ]
@@ -22,18 +19,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Checking your input
-        run: |
-          echo "github.event.pull_request.merged           : $MERGED_RAW"
-          echo "github.event.pull_request.merged == 'true' : $MERGED_TRUE_STR"
-          echo "github.event.pull_request.merged  == true  : $MERGED_TRUE_BOOL"
-        env:
-          MERGED_RAW: ${{ github.event.pull_request.merged }}
-          MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
-          MERGED_TRUE_BOOL: ${{ github.event.pull_request.merged == true }}
-
       - name: Bump version and push tag
-        if: github.event.pull_request.merged
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
@@ -41,7 +27,6 @@ jobs:
           default_bump: minor
 
       - name: Create Release
-        if: github.event.pull_request.merged
         id: create_release
         uses: actions/create-release@v1
         env:
