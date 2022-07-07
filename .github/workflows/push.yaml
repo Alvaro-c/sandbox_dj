@@ -38,15 +38,6 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: https://hooks.slack.com/services/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
-          SLACK_CHANNEL: product-dev
-          SLACK_USERNAME: Rafiki-T800
-          SLACK_ICON: https://colonia.tech/colonia_logo_icon.svg
-          SLACK_MESSAGE: ${{ steps.tag_version.outputs.changelog }}
-
       - name: Alert in Slack
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
