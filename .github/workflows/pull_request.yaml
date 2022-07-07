@@ -32,7 +32,7 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          channel-id: C030XNX7RV4
+          channel-id: product-dev
           payload: |
             {
               "text": "Again a test ( this time from GitHub ) ",
@@ -47,5 +47,5 @@ jobs:
               ]
             }
         env:
-          SLACK_BOT_TOKEN: xoxb-2752500308739-3769764930051-dEYsf6HaaYb8DGfNQC3FpPhH
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
