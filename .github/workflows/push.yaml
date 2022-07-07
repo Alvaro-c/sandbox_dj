@@ -42,9 +42,21 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          channel-id: product-dev
-          slack-message: ${{ steps.tag_version.outputs.changelog }}
+          channel-id: C030XNX7RV4
+          payload: |
+            {
+              "text": "${{ steps.tag_version.outputs.changelog }}",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{ steps.tag_version.outputs.changelog }}"
+                  }
+                }
+              ]
+            }
         env:
-          SLACK_BOT_TOKEN: https://hooks.slack.com/services/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
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
 

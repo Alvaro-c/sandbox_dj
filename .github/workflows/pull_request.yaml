@@ -32,16 +32,16 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          channel-id: sales-notifications-live
+          channel-id: C030XNX7RV4
           payload: |
             {
-              "text": "${{ steps.tag_version.outputs.changelog }}",
+              "text": "Again a test ( this time from GitHub ) ",
               "blocks": [
                 {
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "${{ steps.tag_version.outputs.changelog }}"
+                    "text": "Again a test ( this time from GitHub ) "
                   }
                 }
               ]
