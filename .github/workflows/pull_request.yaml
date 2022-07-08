@@ -29,9 +29,6 @@ jobs:
           MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
           MERGED_TRUE_BOOL: ${{ github.event.pull_request.merged == true }}
 
-      - name: Print git log
-        run: git log --pretty=format:%s master..my-branch
-
       - name: Print git log 2
         run: |
           # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
