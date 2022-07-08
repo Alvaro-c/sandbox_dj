@@ -35,4 +35,4 @@ jobs:
           git --version
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
-          git log --pretty=format:%s master..my-branch
+          git log --pretty=format:%s -- master..my-branch
